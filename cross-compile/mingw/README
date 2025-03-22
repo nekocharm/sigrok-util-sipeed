@@ -38,14 +38,9 @@ First, get the MXE cross-compile environment for MinGW-w64/Windows:
  $ git clone https://github.com/mxe/mxe.git mxe-git
  $ cd mxe-git
 
-Apply some fixes that are currently required for a proper build:
-
- $ patch -p1 < mxe_fixes.patch
- $ patch -p1 < libusb1_upgrade.patch
-
 Build all required packages:
 
- $ make MXE_TARGETS=i686-w64-mingw32.static.posix \
+ $ make MXE_TARGETS=x86_64-w64-mingw32.static.posix \
    MXE_PLUGIN_DIRS=plugins/examples/qt5-freeze \
    gcc glib libzip libusb1 libftdi1 hidapi glibmm qtbase qtimageformats \
    qtsvg qttranslations boost check gendef libieee1284 \
