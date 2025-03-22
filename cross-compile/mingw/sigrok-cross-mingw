@@ -21,7 +21,7 @@
 set -e
 
 # Build target: "i686" (32bit) or "x86_64" (64bit).
-TARGET="i686"
+TARGET="x86_64"
 
 # The path where your MXE directory is located.
 MXE=$HOME/mxe-git
@@ -187,6 +187,7 @@ cd ..
 $ECHO "component libsigrok ..."
 $GIT_CLONE $REPO_BASE/libsigrok
 cd libsigrok
+patch -p1 < ../../libsigrok-add-sipeed.patch
 ./autogen.sh
 ./configure $C $L
 make $PARALLEL $V
@@ -260,7 +261,7 @@ $CMAKE \
 	-DENABLE_TESTS=y \
 	.
 make $PARALLEL $V
-make manual
+# make manual
 if [ $DEBUG = 1 ]; then
 	make install $V
 else
